@@ -335,7 +335,7 @@ public class SavingAccountTest {
                     5);
         });
 
-        String expected = "Минимальный  баланс не может быть больше  максимального, а у вас: минимальный 10_000, максимальный 5_000";
+        String expected = "Минимальный  баланс не может быть больше  максимального, а у вас:  10_000,  5_000";
         String actual = exception.getMessage();
 
         Assertions.assertEquals(expected, actual);
@@ -351,7 +351,7 @@ public class SavingAccountTest {
                     5);
         });
 
-        String expected = "Минимальный  баланс не может быть равен  максимальному, а у вас: минимальный 10_000, максимальный 10_000";
+        String expected = "Минимальный  баланс не может быть равен  максимальному, а у вас:  10_000,  10_000";
         String actual = exception.getMessage();
 
         Assertions.assertEquals(expected, actual);
