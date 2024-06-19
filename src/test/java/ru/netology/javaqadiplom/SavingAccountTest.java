@@ -264,16 +264,17 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldNotIncreaseBalanceMoreMaxBalance() {
+    public void shouldCalculatePercentIfBalanceMoreMaxBalance() {
         SavingAccount account = new SavingAccount(
                 9_500,
                 1_000,
                 10_000,
                 5);
 
-        account.add(350);
+        account.add(595);
 
-        Assertions.assertEquals(9_500 ,  account.getBalance());
+
+        Assertions.assertEquals(475 ,  account.yearChange());
     }
 
     @Test
@@ -319,7 +320,7 @@ public class SavingAccountTest {
                     5);
         });
 
-        String expected = "Начальный баланс не может быть меньше минимального, а у вас:  -1000,  500";
+        String expected = "Начальный баланс не может быть меньше минимального";
         String actual = exception.getMessage();
 
         Assertions.assertEquals(expected, actual);
@@ -329,13 +330,13 @@ public class SavingAccountTest {
     public void shouldThrowExceptionMinAndMaxBalance() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             new SavingAccount(
-                    1_000,
+                    11_000,
                     10_000,
                     5_000,
                     5);
         });
 
-        String expected = "Минимальный  баланс не может быть больше  максимального, а у вас:  10_000,  5_000";
+        String expected = "Минимальный  баланс не может быть больше или равен максимальному";
         String actual = exception.getMessage();
 
         Assertions.assertEquals(expected, actual);
@@ -345,13 +346,13 @@ public class SavingAccountTest {
     public void shouldThrowExceptionMinEqualMaxBalance() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             new SavingAccount(
-                    1_000,
+                    17_000,
                     10_000,
                     10_000,
                     5);
         });
 
-        String expected = "Минимальный  баланс не может быть равен  максимальному, а у вас:  10_000,  10_000";
+        String expected = "Минимальный  баланс не может быть больше или равен максимальному";
         String actual = exception.getMessage();
 
         Assertions.assertEquals(expected, actual);
