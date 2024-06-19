@@ -319,7 +319,7 @@ public class SavingAccountTest {
                     5);
         });
 
-        String expected = "Начальный баланс не может быть меньше минимального, а у вас: начальный баланс -1000, минимальный 500";
+        String expected = "Начальный баланс не может быть меньше минимального, а у вас:  -1000,  500";
         String actual = exception.getMessage();
 
         Assertions.assertEquals(expected, actual);
@@ -356,26 +356,6 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
