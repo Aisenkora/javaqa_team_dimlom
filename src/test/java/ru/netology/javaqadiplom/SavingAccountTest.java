@@ -251,6 +251,19 @@ public class SavingAccountTest {
     }
 
     @Test
+    public void shouldRoundPercent() {
+        SavingAccount account = new SavingAccount(
+                0,
+                0,
+                10_000,
+                5);
+
+        account.add(1_217);
+
+        Assertions.assertEquals(60 , account.yearChange());
+    }
+
+    @Test
     public void shouldNotIncreaseBalanceMoreMaxBalance() {
         SavingAccount account = new SavingAccount(
                 9_500,
