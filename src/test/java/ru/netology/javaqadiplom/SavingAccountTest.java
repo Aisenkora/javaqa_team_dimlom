@@ -264,6 +264,71 @@ public class SavingAccountTest {
     }
 
     @Test
+    public void shouldCalculatePercentIfAddLess100() {
+        SavingAccount account = new SavingAccount(
+                20,
+                20,
+                10_000,
+                5);
+
+        account.add(25);
+
+        Assertions.assertEquals(2 , account.yearChange());
+    }
+
+    @Test
+    public void shouldCalculatePercentIfAddLess100BalanceZero() {
+        SavingAccount account = new SavingAccount(
+                0,
+                0,
+                10_000,
+                5);
+
+        account.add(99);
+
+        Assertions.assertEquals(4 , account.yearChange());
+    }
+
+    @Test
+    public void shouldCalculateIfAmountPercentLessOne() {
+        SavingAccount account = new SavingAccount(
+                20,
+                20,
+                10_000,
+                1);
+
+        account.add(25);
+
+        Assertions.assertEquals(0 , account.yearChange());
+    }
+
+    @Test
+    public void shouldCalculateIfAmountPercentOne() {
+        SavingAccount account = new SavingAccount(
+                50,
+                50,
+                10_000,
+                1);
+
+        account.add(50);
+
+        Assertions.assertEquals(1 , account.yearChange());
+    }
+
+    @Test
+    public void shouldCalculateIfAmountPercentMoreOne() {
+        SavingAccount account = new SavingAccount(
+                50,
+                50,
+                10_000,
+                1);
+
+        account.add(51);
+
+        Assertions.assertEquals(1 , account.yearChange());
+    }
+
+    @Test
     public void shouldCalculatePercentIfBalanceMoreMaxBalance() {
         SavingAccount account = new SavingAccount(
                 9_500,
