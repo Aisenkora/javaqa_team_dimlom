@@ -177,4 +177,16 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldGetPercent() {
+        CreditAccount account = new CreditAccount(1_000, 500, 80);
+
+        account.pay(1_099);
+
+        int expected = -79;
+        int actual = account.yearChange();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
